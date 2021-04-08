@@ -1,0 +1,31 @@
+<table class="table-auto w-full justify-center bg-gray-50">
+  <thead class="justify-center">
+    <th>Nome</th>
+    <th>Valor Unitário</th>
+    <th>Ações</th>
+  </thead>
+
+  <tbody>
+    <tr
+      *ngFor="let produto of produtos | async"
+      class="text-center hover:bg-gray-100 h-16"
+    >
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.valorUnitario }}</td>
+      <td class="flex flex-row justify-evenly items-center h-16">
+        <button
+          class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 w-24"
+          (click)="edit(produto, produto.key)"
+        >
+          Editar
+        </button>
+        <button
+          class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 w-24"
+          (click)="delete(produto.key)"
+        >
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

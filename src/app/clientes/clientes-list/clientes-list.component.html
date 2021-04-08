@@ -1,0 +1,45 @@
+<table class="table-auto w-full justify-center bg-gray-50">
+  <thead class="justify-center">
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Data de nascimento</th>
+    <th>CPF</th>
+    <th>Logradouro</th>
+    <th>Numero</th>
+    <th>Bairro</th>
+    <th>Cidade</th>
+    <th>CEP</th>
+    <th>Ações</th>
+  </thead>
+
+  <tbody>
+    <tr
+      *ngFor="let cliente of clientes | async"
+      class="text-center hover:bg-gray-100 h-16"
+    >
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.dataNascimento }}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.logradouro }}</td>
+      <td>{{ cliente.numero }}</td>
+      <td>{{ cliente.bairro }}</td>
+      <td>{{ cliente.cidade }}</td>
+      <td>{{ cliente.cep }}</td>
+      <td class="flex flex-row justify-evenly items-center h-16">
+        <button
+          class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 w-24"
+          (click)="edit(cliente, cliente.key)"
+        >
+          Editar
+        </button>
+        <button
+          class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 w-24"
+          (click)="delete(cliente.key)"
+        >
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

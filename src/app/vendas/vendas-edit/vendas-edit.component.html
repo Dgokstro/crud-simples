@@ -1,0 +1,158 @@
+<h3>Cadastro de Venda</h3>
+<form (ngSubmit)="onSubmit()">
+  <div class="w-full grid grid-cols-3 gap-4">
+    <div class="col-span-2">
+      <label>Cliente: </label>
+      <div *ngIf="verificaCliente; then thenBlock; else elseBlock"></div>
+      <ng-template #thenBlock>
+        <select
+          name="cliente"
+          class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+          (change)="onSelectClient($event.target.value)"
+          [(ngModel)]="venda.cliente.key"
+        >
+          <option value=""></option>
+          <option *ngFor="let cliente of clientes" value="{{ cliente.key }}">
+            {{ cliente.nome }}
+          </option>
+        </select>
+      </ng-template>
+      <ng-template #elseBlock>
+        <select
+          name="cliente"
+          class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+          (change)="onSelectClient($event.target.value)"
+        >
+          <option value=""></option>
+          <option *ngFor="let cliente of clientes" value="{{ cliente.key }}">
+            {{ cliente.nome }}
+          </option>
+        </select>
+      </ng-template>
+    </div>
+    <div>
+      <label>Data: </label>
+      <input
+        type="datetime-local"
+        name="dataHora"
+        [(ngModel)]="venda.dataHora"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+        placeholder="hora da venda"
+      />
+    </div>
+    <div class="col-span-3">
+      <table class="table-auto w-full justify-center bg-gray-50">
+        <thead class="justify-center">
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Valor Unitário</th>
+          <th>Valor Total</th>
+          <th>Excluir</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of venda.itens; index as itemIndex">
+            <td>
+              <div
+                *ngIf="verificaItem(itemIndex); then thenBlock; else elseBlock"
+              ></div>
+              <ng-template #thenBlock>
+                <select
+                  name="item {{ itemIndex }}"
+                  class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+                  (change)="onSelectProduto($event.target.value, itemIndex)"
+                  [(ngModel)]="venda.itens[itemIndex].produto.key"
+                >
+                  <option value=""></option>
+                  <option
+                    *ngFor="let produto of produtos"
+                    value="{{ produto.key }}"
+                  >
+                    {{ produto.nome }}
+                  </option>
+                </select>
+              </ng-template>
+              <ng-template #elseBlock>
+                <select
+                  name="item {{ itemIndex }}"
+                  class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+                  (change)="onSelectProduto($event.target.value, itemIndex)"
+                >
+                  <option value=""></option>
+                  <option
+                    *ngFor="let produto of produtos"
+                    value="{{ produto.key }}"
+                  >
+                    {{ produto.nome }}
+                  </option>
+                </select>
+              </ng-template>
+            </td>
+            <td>
+              <input
+                type="number"
+                name="quantidade {{ itemIndex }}"
+                [(ngModel)]="venda.itens[itemIndex].quantidade"
+                class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="valorUnitario {{ itemIndex }}"
+                [(ngModel)]="venda.itens[itemIndex].valorUnitario"
+                class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="valorTotal {{ itemIndex }}"
+                [(ngModel)]="venda.itens[itemIndex].valorTotal"
+                class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-gray-200 w-full"
+                disabled="true"
+              />
+            </td>
+            <td>
+              <button
+                class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 w-24"
+                (click)="excluirItem(itemIndex)"
+                type="button"
+              >
+                Excluir
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <button
+              class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 w-24"
+              (click)="adicionarItem()"
+              type="button"
+            >
+              Adicionar Item
+            </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <label>Valor Total: </label>
+      <input
+        type="number"
+        name="valorTotal"
+        [(ngModel)]="venda.valorTotal"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-gray-200 w-full"
+        placeholder="valor total da venda"
+        disabled="true"
+      />
+    </div>
+
+    <div class="col-span-3 text-right">
+      <button
+        class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 w-24"
+        type="submit"
+      >
+        Gravar
+      </button>
+    </div>
+  </div>
+</form>

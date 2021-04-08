@@ -1,0 +1,118 @@
+<h3>Cadastro de Clientes</h3>
+<form (ngSubmit)="onSubmit()">
+  <div class="w-full grid grid-cols-3 gap-4">
+    <div class="col-span-2">
+      <label>Nome: </label>
+      <input
+        type="text"
+        name="nome"
+        [(ngModel)]="cliente.nome"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+        placeholder="Nome do cliente"
+      />
+    </div>
+    <div>
+      <label>Cpf: </label>
+      <input
+        type="text"
+        name="cpf"
+        [(ngModel)]="cliente.cpf"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+        placeholder="CPF do cliente"
+      />
+    </div>
+    <div class="col-span-2">
+      <label>Email: </label>
+      <input
+        type="text"
+        name="email"
+        [(ngModel)]="cliente.email"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+        placeholder="email do cliente"
+      />
+    </div>
+    <div>
+      <label>Data de nascimento: </label>
+      <input
+        type="date"
+        name="dataNascimento"
+        [(ngModel)]="cliente.dataNascimento"
+        class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+        placeholder="Data de nascimento do cliente"
+      />
+    </div>
+
+    <div class="col-span-3">
+      <label>Endereço:</label>
+      <div class="grid grid-cols-6 gap-4">
+        <div class="">
+          <label>CEP: </label>
+          <input
+            type="text"
+            name="cep"
+            [(ngModel)]="cliente.cep"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="CEP do cliente"
+          />
+        </div>
+        <div class="col-span-4">
+          <label>Logradouro: </label>
+          <input
+            type="text"
+            name="logradouro"
+            [(ngModel)]="cliente.logradouro"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="(rua, avenida, estrada, viela, etc.)"
+          />
+        </div>
+        <div>
+          <label>Numero: </label>
+          <input
+            type="number"
+            name="numero"
+            [(ngModel)]="cliente.numero"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="Numero do endereço "
+          />
+        </div>
+        <div class="col-span-2">
+          <label>Bairro: </label>
+          <input
+            type="text"
+            name="bairro"
+            [(ngModel)]="cliente.bairro"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="Bairro do endereço "
+          />
+        </div>
+        <div class="col-span-2">
+          <label>Complemento: </label>
+          <input
+            type="text"
+            name="complemento"
+            [(ngModel)]="cliente.complemento"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="complemento do endereço"
+          />
+        </div>
+        <div class="col-span-2">
+          <label>Cidade: </label>
+          <input
+            type="text"
+            name="cidade"
+            [(ngModel)]="cliente.cidade"
+            class="py-2 px-4 border shadow-sm text-sm font-medium rounded-md text-black bg-white-400 w-full"
+            placeholder="Cidade do cliente"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3 text-right">
+      <button
+        class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 w-24 "
+      >
+        Gravar
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<div class="flex flex-col h-screen max-h-screen">
+  <div>
+    <app-top-bar></app-top-bar>
+  </div>
+  <div class="flex flex-row h-full">
+    <div class="h-full">
+      <app-side-menu></app-side-menu>
+    </div>
+    <div class="flex flex-col w-full items-center h-full">
+      <div class="max-w-screen-lg h-full m-10 justify-center overflow-auto">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="max-h-15 text-center">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</div>
